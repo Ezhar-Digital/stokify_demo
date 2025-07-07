@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Cabang - Stokify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mobile-frame">
+        <div class="notch"></div>
+        <div class="screen">
+
+            <div class="auth-container">
+                <div class="card">
+                    <h2>Langkah 2 dari 2: Cabang Pertama</h2>
+                    <p>Masukkan nama toko, gudang, atau cabang pertama Anda.</p>
+                    <form onsubmit="event.preventDefault(); window.location.href='dashboard.html';">
+                        <div class="form-group">
+                            <label for="branch-name">Nama Cabang/Toko</label>
+                            <input type="text" id="branch-name" placeholder="Contoh: Gudang Pusat" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Selesai & Masuk Dashboard</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

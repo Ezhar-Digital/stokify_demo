@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk - Stokify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mobile-frame">
+        <div class="notch"></div>
+        <div class="screen">
+
+            <header class="header">
+                <a href="dashboard.html" class="icon-link">←</a>
+                <h1>Detail Produk</h1>
+                <a href="add-edit-product.html" class="icon-link">✏️</a>
+            </header>
+
+            <div class="container">
+                <div class="product-detail-img"></div>
+                <h2>Kopi Arabika Gayo</h2>
+                <p style="color: #666; margin-top: -15px;">SKU: KPG-001</p>
+                <p>Biji kopi arabika asli dari dataran tinggi Gayo, Aceh. Memiliki aroma kuat dan keasaman yang
+                    seimbang.</p>
+
+                <!-- Stok Section -->
+                <div class="detail-section">
+                    <h3>Stok Saat Ini</h3>
+                    <div class="free-only">
+                        <div class="form-group">
+                            <label for="stock-qty">Ubah Jumlah Stok</label>
+                            <input type="number" id="stock-qty" value="25">
+                        </div>
+                        <button class="btn btn-primary" onclick="alert('Stok berhasil diperbarui!')">Simpan
+                            Perubahan</button>
+                        <div class="card" style="margin-top:20px; background-color: #e3f2fd;">
+                            <h4>Upgrade ke Premium!</h4>
+                            <p>Lacak setiap barang masuk & keluar dan lihat riwayat stok lengkap. Upgrade sekarang!</p>
+                        </div>
+                    </div>
+                    <div class="premium-only">
+                        <p style="font-size: 2em; font-weight: bold; margin: 0;">25 <span
+                                style="font-size:0.6em; font-weight:normal;">unit</span></p>
+                        <p>Lokasi: Gudang Pusat</p>
+                        <div class="stock-actions">
+                            <button class="btn btn-primary" id="openTransactionModal">+ Barang Masuk</button>
+                            <button class="btn btn-secondary" id="openTransactionModalOut">- Barang Keluar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Riwayat Stok Section (Hanya untuk PREMIUM) -->
+                <div class="detail-section premium-only">
+                    <h3>Riwayat Stok</h3>
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>Tanggal</th>
+                                <th>Tipe</th>
+                                <th>Jumlah</th>
+                                <th>Stok Akhir</th>
+                                <th>Oleh</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>25/05/24</td>
+                                <td class="out">OUT</td>
+                                <td>-5</td>
+                                <td>25</td>
+                                <td>Rina</td>
+                            </tr>
+                            <tr>
+                                <td>24/05/24</td>
+                                <td class="in">IN</td>
+                                <td>+10</td>
+                                <td>30</td>
+                                <td>Budi</td>
+                            </tr>
+                            <tr>
+                                <td>22/05/24</td>
+                                <td class="in">AUDIT</td>
+                                <td>20</td>
+                                <td>20</td>
+                                <td>System</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="simulation-bar">
+                <span>Mode Pengguna: Free</span>
+                <label class="switch"><input type="checkbox" id="userModeToggle"><span class="slider"></span></label>
+                <span>Premium</span>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Modal untuk Transaksi (posisinya di luar frame untuk overlay penuh) -->
+    <div class="modal-overlay" id="transactionModalOverlay">
+        <div class="modal-content">
+            <h2>Catat Barang Masuk</h2>
+            <div class="form-group"><label for="tx-qty">Jumlah</label><input type="number" id="tx-qty"
+                    placeholder="Masukkan jumlah"></div>
+            <div class="form-group"><label for="tx-notes">Keterangan (Opsional)</label><textarea id="tx-notes" rows="3"
+                    placeholder="Contoh: Pembelian dari Supplier A"></textarea></div>
+            <div class="stock-actions"><button class="btn btn-secondary"
+                    id="closeTransactionModal">Batal</button><button class="btn btn-primary"
+                    id="saveTransaction">Simpan</button></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

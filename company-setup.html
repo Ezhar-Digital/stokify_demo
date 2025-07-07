@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Perusahaan - Stokify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mobile-frame">
+        <div class="notch"></div>
+        <div class="screen">
+
+            <div class="auth-container">
+                <div class="card">
+                    <h2>Langkah 1 dari 2: Informasi Perusahaan</h2>
+                    <p>Masukkan nama bisnis atau perusahaan Anda.</p>
+                    <form onsubmit="event.preventDefault(); window.location.href='branch-setup.html';">
+                        <div class="form-group">
+                            <label for="company-name">Nama Perusahaan</label>
+                            <input type="text" id="company-name" placeholder="Contoh: Kopi Jaya Abadi" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">Selanjutnya</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

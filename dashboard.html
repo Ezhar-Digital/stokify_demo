@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Stokify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mobile-frame">
+        <div class="notch"></div>
+        <div class="screen">
+
+            <header class="header">
+                <h1>Stokify</h1>
+                <a href="user-management.html" class="icon-link">👥</a>
+            </header>
+
+            <div class="container">
+                <!-- Search Bar -->
+                <div class="form-group">
+                    <input type="search" placeholder="Cari produk...">
+                </div>
+
+                <!-- Filter Container -->
+                <div class="filter-container">
+                    <div class="form-group">
+                        <select id="categoryFilter">
+                            <option value="all">Semua Kategori</option>
+                            <option value="bahan-baku">Bahan Baku</option>
+                            <option value="peralatan">Peralatan</option>
+                            <option value="barang-jadi">Barang Jadi</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select id="branchFilter">
+                            <option value="all">Semua Gudang</option>
+                            <option value="gudang-pusat">Gudang Pusat</option>
+                            <option value="toko-depan">Toko Depan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Product List Section -->
+                <div class="item-list">
+                    <!-- Atribut data-branches ditambahkan -->
+                    <a href="product-detail.html" data-category="bahan-baku" data-branches="gudang-pusat,toko-depan">
+                        <div class="card list-item-card product">
+                            <div class="img-placeholder"></div>
+                            <div class="info">
+                                <h3>Kopi Arabika Gayo</h3>
+                                <p>SKU: KPG-001</p>
+                                <span class="category-tag">Bahan Baku</span>
+                            </div>
+                            <div class="right-content">25</div>
+                        </div>
+                    </a>
+                    <a href="product-detail.html" data-category="peralatan" data-branches="gudang-pusat">
+                        <div class="card list-item-card product">
+                            <div class="img-placeholder"></div>
+                            <div class="info">
+                                <h3>Mesin Kopi Espresso</h3>
+                                <p>SKU: MCN-001</p>
+                                <span class="category-tag">Peralatan</span>
+                            </div>
+                            <div class="right-content">1</div>
+                        </div>
+                    </a>
+                    <a href="product-detail.html" data-category="bahan-baku" data-branches="gudang-pusat">
+                        <div class="card list-item-card product">
+                            <div class="img-placeholder"></div>
+                            <div class="info">
+                                <h3>Susu UHT Full Cream</h3>
+                                <p>SKU: SS-001</p>
+                                <span class="category-tag">Bahan Baku</span>
+                            </div>
+                            <div class="right-content">80</div>
+                        </div>
+                    </a>
+                    <a href="product-detail.html" data-category="bahan-baku" data-branches="toko-depan">
+                        <div class="card list-item-card product" style="border-left: 5px solid var(--danger-color);">
+                            <div class="img-placeholder"></div>
+                            <div class="info">
+                                <h3>Sirup Karamel</h3>
+                                <p>SKU: SRP-002</p>
+                                <span class="category-tag">Bahan Baku</span>
+                            </div>
+                            <div class="right-content">4</div>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Pesan jika tidak ada hasil -->
+                <div id="no-results-message"
+                    style="display: none; text-align: center; color: var(--dark-gray); padding: 20px;">
+                    <p>Tidak ada produk yang cocok dengan filter.</p>
+                </div>
+            </div>
+
+            <a href="add-edit-product.html" class="fab">+</a>
+
+            <div class="simulation-bar">
+                <span>Mode Pengguna: Free</span>
+                <label class="switch">
+                    <input type="checkbox" id="userModeToggle">
+                    <span class="slider"></span>
+                </label>
+                <span>Premium</span>
+            </div>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

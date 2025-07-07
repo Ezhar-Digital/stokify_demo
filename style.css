@@ -1,0 +1,484 @@
+/* --- Stokify Lo-Fi Styling with Mobile Frame --- */
+:root {
+    --primary-color: #007bff;
+    --light-gray: #f4f4f9;
+    --gray: #ddd;
+    --dark-gray: #666;
+    --text-color: #333;
+    --white: #fff;
+    --danger-color: #dc3545;
+}
+
+/* 1. Body Styling - The "desktop" background */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    background-color: #e9ecef;
+    /* A neutral background for the desktop view */
+    color: var(--text-color);
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px 0;
+    box-sizing: border-box;
+}
+
+/* 2. The Mobile Frame Itself */
+.mobile-frame {
+    width: 390px;
+    /* iPhone 12/13 Pro width */
+    height: 844px;
+    /* iPhone 12/13 Pro height */
+    background-color: #111;
+    border: 10px solid #111;
+    border-radius: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 3. The Notch at the top */
+.notch {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 30px;
+    background-color: #111;
+    border-radius: 0 0 15px 15px;
+    z-index: 10;
+}
+
+/* 4. The Screen - This is where ALL your app content goes */
+.screen {
+    width: 100%;
+    height: 100%;
+    background-color: var(--light-gray);
+    border-radius: 30px;
+    /* Inner radius */
+    overflow-y: auto;
+    /* CRITICAL: This makes the content scrollable */
+    position: relative;
+    /* CRITICAL: This contains fixed-position elements like FAB */
+}
+
+/* --- App Content Styling (Mostly unchanged) --- */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    background-color: var(--white);
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+
+.header .icon-link {
+    font-size: 1.5em;
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+.card {
+    background-color: var(--white);
+    border: 1px solid var(--gray);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    margin-top: 0;
+}
+
+.card p {
+    line-height: 1.6;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--gray);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    font-size: 1em;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-secondary {
+    background-color: var(--dark-gray);
+    color: var(--white);
+}
+
+.btn-full {
+    width: 100%;
+}
+
+.item-list a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.list-item-card {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.list-item-card .img-placeholder {
+    width: 60px;
+    height: 60px;
+    background-color: var(--gray);
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.list-item-card.product .img-placeholder {
+    border-radius: 4px;
+}
+
+.list-item-card .info {
+    flex-grow: 1;
+}
+
+.list-item-card .info h3 {
+    margin: 0 0 5px;
+}
+
+.list-item-card .info p {
+    margin: 0;
+    color: var(--dark-gray);
+}
+
+.list-item-card .right-content {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* MODIFIED: FAB and Simulation Bar now use absolute positioning within the .screen */
+.fab {
+    position: absolute;
+    /* Changed from fixed */
+    bottom: 80px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 150;
+}
+
+.simulation-bar {
+    position: absolute;
+    /* Changed from fixed */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    z-index: 200;
+    font-size: 0.9em;
+    box-sizing: border-box;
+    border-radius: 0 0 28px 28px;
+    /* Match inner screen radius */
+}
+
+/* Other styles remain mostly the same */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.auth-container .card {
+    width: 90%;
+    max-width: 400px;
+    margin-top: 0;
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.onboarding-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.slider-wrapper {
+    flex-grow: 1;
+    overflow: hidden;
+    width: 100%;
+}
+
+.slides {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.slide .img-placeholder {
+    width: 150px;
+    height: 150px;
+    background-color: var(--gray);
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.slide h2 {
+    font-size: 1.5em;
+}
+
+.slider-nav {
+    padding: 20px;
+    text-align: center;
+}
+
+.dots-container {
+    margin-bottom: 20px;
+}
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--gray);
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: var(--primary-color);
+}
+
+.product-detail-img {
+    width: 100%;
+    height: 200px;
+    background-color: var(--gray);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.detail-section h2 {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 5px;
+}
+
+.stock-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.premium-only,
+.free-only {
+    display: none;
+}
+
+.history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.history-table th,
+.history-table td {
+    border: 1px solid var(--gray);
+    padding: 8px;
+    text-align: left;
+}
+
+.history-table th {
+    background-color: var(--light-gray);
+}
+
+.in {
+    color: green;
+}
+
+.out {
+    color: red;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 300;
+}
+
+.modal-content {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--gray);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: var(--primary-color);
+}
+
+input:checked+.slider:before {
+    transform: translateX(26px);
+}
+
+.add-new-link {
+    font-size: 0.8em;
+    font-weight: normal;
+    margin-left: 8px;
+    color: var(--primary-color);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.add-new-link:hover {
+    color: #0056b3;
+}
+
+.category-tag {
+    display: inline-block;
+    background-color: #e9ecef;
+    /* Warna yang sedikit berbeda dari card */
+    color: var(--dark-gray);
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.75em;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.filter-container {
+    display: flex;
+    gap: 10px;
+    /* Jarak antara dua filter */
+    margin-bottom: 20px;
+    /* Jarak ke daftar produk */
+}
+
+.filter-container .form-group {
+    flex: 1;
+    /* Membuat kedua filter memiliki lebar yang sama */
+    margin-bottom: 0;
+    /* Hapus margin bawah karena sudah diatur oleh container */
+}
