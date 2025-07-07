@@ -110,7 +110,7 @@ Untuk menjalankan proyek ini di lingkungan lokal Anda, ikuti langkah-langkah ber
 
 Sebelum memulai coding, proyek ini dirancang melalui prototipe Hi-Fi interaktif menggunakan HTML, CSS, dan JavaScript. Anda dapat mencobanya untuk memahami alur aplikasi secara penuh.
 
-*   **Link Prototipe:** [Coba Prototipe Stokify Di Sini](link-to-your-prototype-hosted-on-vercel-or-github-pages)
+*   **Link Prototipe:** [Coba Prototipe Stokify Di Sini](https://ezhar-digital.github.io/stokify_demo/)
 *   **Fitur Simulasi:** Di bagian bawah layar prototipe, terdapat *toggle switch* untuk beralih antara tampilan **Pengguna Free** dan **Pengguna Premium** untuk melihat perbedaan fitur secara langsung.
 
 ### 🗺️ Roadmap Pengembangan
