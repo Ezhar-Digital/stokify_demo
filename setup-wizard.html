@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup Awal - Stokify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="setup-wizard-page">
+    <div class="mobile-frame">
+        <header class="app-header">
+            <h1>Setup Awal</h1>
+        </header>
+        <div class="mobile-frame-content">
+            <div class="container">
+                <div class="step-indicator">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                </div>
+                <div id="step-1" class="wizard-step active">
+                    <h3>1. Informasi Perusahaan</h3>
+                    <p style="color: #6c757d; margin-bottom: 20px;">Ini adalah nama bisnis atau usaha Anda.</p>
+                    <div class="form-group"><label for="company-name">Nama Perusahaan/Toko</label><input type="text"
+                            id="company-name" placeholder="cth: Kedai Kopi Senja"></div>
+                </div>
+                <div id="step-2" class="wizard-step">
+                    <h3>2. Buat Cabang Pertama</h3>
+                    <p style="color: #6c757d; margin-bottom: 20px;">Ini adalah lokasi fisik tempat Anda menyimpan stok.
+                    </p>
+                    <div class="form-group"><label for="branch-name">Nama Cabang</label><input type="text"
+                            id="branch-name" placeholder="cth: Toko Pusat atau Gudang Utama"></div>
+                </div>
+            </div>
+        </div>
+        <div style="padding: 15px;"><button id="wizard-next-btn" class="btn btn-primary">Lanjutkan</button></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

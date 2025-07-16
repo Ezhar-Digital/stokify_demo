@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Tim - Stokify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mobile-frame">
+        <header class="app-header">
+            <a href="settings.html" class="back-button">‹</a>
+            <h1>Manajemen Tim</h1>
+            <div class="action-button"></div>
+        </header>
+        <div class="mobile-frame-content">
+            <div class="container">
+                <div class="card free-feature text-center">
+                    <h3>Fitur Tim hanya untuk Premium</h3>
+                    <p style="color: #6c757d; margin: 10px 0;">Upgrade akun Anda untuk mengundang staf dan
+                        berkolaborasi.</p>
+                    <button class="btn btn-primary" style="margin-top: 15px;"
+                        onclick="navigateTo('upgrade.html')">Upgrade Sekarang</button>
+                </div>
+                <div class="premium-feature">
+                    <button class="btn btn-primary" onclick="navigateTo('invite-member.html')">+ Undang Anggota
+                        Baru</button>
+                    <div class="card" style="margin-top: 20px;">
+                        <h4>Anggota Tim (2/3)</h4>
+                        <div class="team-member-item">
+                            <div class="team-member-info">
+                                <h4>Budi (Anda)</h4>
+                                <p>budi@elektronik.com</p>
+                            </div>
+                            <div class="team-member-role"><span>Admin</span></div>
+                        </div>
+                        <div class="team-member-item">
+                            <div class="team-member-info">
+                                <h4>Ani</h4>
+                                <p>ani.staf@elektronik.com</p>
+                            </div>
+                            <div class="team-member-actions"><select style="padding: 5px;">
+                                    <option>Staf</option>
+                                    <option>Admin</option>
+                                </select><button onclick="alert('Yakin ingin menghapus Ani?')">Hapus</button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="global-controls"><span>Free Mode</span><label class="switch"><input type="checkbox"
+                id="mode-switch-checkbox"><span class="slider"></span></label><span>Premium Mode</span></div>
+    <script src="script.js"></script>
+</body>
+
+</html>

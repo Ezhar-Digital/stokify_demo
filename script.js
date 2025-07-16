@@ -1,230 +1,169 @@
-/**
- * Stokify Lo-Fi Prototype Script
- *
- * This single script handles all interactivity for the prototype, including:
- * 1. Onboarding slider navigation.
- * 2. Premium vs. Free user mode simulation.
- * 3. Combined filtering for categories and branches on the dashboard.
- * 4. Modal pop-ups for stock transactions.
- * 5. Modal pop-up for adding new categories.
- *
- * It uses null-checks (if-statements) to ensure that code only runs on the
- * pages where the relevant HTML elements exist, preventing errors.
- */
-
+// script.js
 document.addEventListener("DOMContentLoaded", () => {
 
-    // --- 1. Onboarding Slider Logic ---
-    // This code only runs if it finds the slider elements (on onboarding.html)
-    const sliderWrapper = document.querySelector(".slider-wrapper");
-    if (sliderWrapper) {
-        const slides = document.querySelector(".slides");
-        const dots = document.querySelectorAll(".dot");
-        const nextBtn = document.getElementById("nextBtn");
+    // === Global Free/Premium Mode Switch Logic ===
+    const modeSwitch = document.getElementById('mode-switch-checkbox');
+    const currentMode = localStorage.getItem('stokifyMode') || 'free';
+
+    function setMode(mode) {
+        if (mode === 'premium') {
+            document.body.classList.add('premium-mode');
+            if (modeSwitch) modeSwitch.checked = true;
+        } else {
+            document.body.classList.remove('premium-mode');
+            if (modeSwitch) modeSwitch.checked = false;
+        }
+        localStorage.setItem('stokifyMode', mode);
+    }
+
+    if (modeSwitch) {
+        modeSwitch.addEventListener('change', (e) => {
+            setMode(e.target.checked ? 'premium' : 'free');
+        });
+    }
+    // Set initial mode on page load
+    setMode(currentMode);
+
+    // === Page Specific Logic ===
+
+    // --- Onboarding Page Logic ---
+    const onboardingPage = document.getElementById('onboarding-page');
+    if (onboardingPage) {
+        const slider = document.querySelector('.onboarding-slider');
+        const slides = document.querySelectorAll('.slide');
+        const nextBtn = document.getElementById('next-slide-btn');
         let currentSlide = 0;
-        const totalSlides = dots.length;
 
-        function goToSlide(slideIndex) {
-            currentSlide = slideIndex;
-            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-            dots.forEach(dot => dot.classList.remove("active"));
-            dots[currentSlide].classList.add("active");
-
-            // Change button text on the last slide
-            if (currentSlide === totalSlides - 1) {
-                nextBtn.textContent = "Mulai Sekarang";
+        nextBtn.addEventListener('click', () => {
+            currentSlide++;
+            if (currentSlide < slides.length) {
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+                if (currentSlide === slides.length - 1) {
+                    nextBtn.innerText = "Mulai Sekarang";
+                }
             } else {
-                nextBtn.textContent = "Selanjutnya";
+                navigateTo('register.html');
+            }
+        });
+    }
+
+    // --- Setup Wizard Page Logic ---
+    const wizardPage = document.getElementById('setup-wizard-page');
+    if (wizardPage) {
+        const steps = document.querySelectorAll('.wizard-step');
+        const dots = document.querySelectorAll('.dot');
+        const nextBtn = document.getElementById('wizard-next-btn');
+        let currentStep = 0;
+
+        function showStep(stepIndex) {
+            steps.forEach((step, index) => {
+                step.classList.toggle('active', index === stepIndex);
+                dots[index].classList.toggle('active', index === stepIndex);
+            });
+            if (stepIndex === steps.length - 1) {
+                nextBtn.innerText = "Selesai & Masuk Dashboard";
+            } else {
+                nextBtn.innerText = "Lanjutkan";
             }
         }
 
-        // Event for the main button
-        nextBtn.addEventListener("click", () => {
-            if (currentSlide === totalSlides - 1) {
-                window.location.href = "register.html";
+        nextBtn.addEventListener('click', () => {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                showStep(currentStep);
             } else {
-                goToSlide(currentSlide + 1);
+                navigateTo('dashboard.html');
             }
         });
 
-        // Event for the navigation dots
-        dots.forEach((dot, index) => {
-            dot.addEventListener("click", () => goToSlide(index));
-        });
-
-        // Initialize slider to the first slide
-        goToSlide(0);
+        showStep(0);
     }
 
-
-    // --- 2. User Mode Simulation (Premium/Free Toggle) ---
-    // This logic runs on every page that has the simulation bar.
-    const userModeToggle = document.getElementById("userModeToggle");
-
-    // Function to apply the UI changes based on the stored mode
-    function applyUserMode() {
-        const isPremium = localStorage.getItem("stokifyUserMode") === "premium";
-
-        if (userModeToggle) {
-            userModeToggle.checked = isPremium;
-        }
-
-        document.querySelectorAll(".premium-only").forEach(el => {
-            el.style.display = isPremium ? "block" : "none";
-        });
-        document.querySelectorAll(".free-only").forEach(el => {
-            el.style.display = isPremium ? "none" : "block";
-        });
-    }
-
-    // Add event listener to the toggle switch if it exists on the page
-    if (userModeToggle) {
-        userModeToggle.addEventListener("change", () => {
-            if (userModeToggle.checked) {
-                localStorage.setItem("stokifyUserMode", "premium");
-                alert("Simulasi diubah ke Pengguna Premium. Fitur canggih kini aktif.");
-            } else {
-                localStorage.setItem("stokifyUserMode", "free");
-                alert("Simulasi diubah ke Pengguna Free. Fitur dibatasi.");
-            }
-            // Reload the page to apply changes everywhere consistently
-            window.location.reload();
-        });
-    }
-
-    // Always apply the user mode on every page load
-    applyUserMode();
-
-
-    // --- 3. Combined Filter Logic (on dashboard.html) ---
-    // This code only runs if it finds both filter dropdowns.
-    const categoryFilter = document.getElementById("categoryFilter");
-    const branchFilter = document.getElementById("branchFilter");
-
-    if (categoryFilter && branchFilter) {
-        const productItems = document.querySelectorAll(".item-list > a");
-        const noResultsMessage = document.getElementById("no-results-message");
+    // --- Dashboard Page Logic (Filtering) ---
+    const dashboardPage = document.getElementById('dashboard-page');
+    if (dashboardPage) {
+        const searchInput = document.getElementById('search-input');
+        const categoryFilter = document.getElementById('filter-kategori');
+        const branchFilter = document.getElementById('filter-cabang');
+        const productList = document.querySelectorAll('#product-list .product-item');
 
         function applyFilters() {
+            const searchTerm = searchInput.value.toLowerCase();
             const selectedCategory = categoryFilter.value;
-            const selectedBranch = branchFilter.value;
-            let visibleCount = 0;
+            const isPremium = document.body.classList.contains('premium-mode');
 
-            productItems.forEach(product => {
+            const selectedBranch = isPremium && branchFilter ? branchFilter.value : 'all';
+
+            productList.forEach(product => {
+                const productName = product.querySelector('h3').textContent.toLowerCase();
                 const productCategory = product.dataset.category;
-                const productBranches = product.dataset.branches;
+                const productBranch = product.dataset.branch;
 
-                // Check if the product matches BOTH filters
-                const categoryMatch = (selectedCategory === "all" || productCategory === selectedCategory);
-                const branchMatch = (selectedBranch === "all" || productBranches.includes(selectedBranch));
+                const nameMatch = productName.includes(searchTerm);
+                const categoryMatch = (selectedCategory === 'all') || (selectedCategory === productCategory);
+                const branchMatch = !isPremium || (selectedBranch === 'all') || (selectedBranch === productBranch);
 
-                if (categoryMatch && branchMatch) {
-                    product.style.display = "block";
-                    visibleCount++;
+                if (nameMatch && categoryMatch && branchMatch) {
+                    product.style.display = 'flex';
                 } else {
-                    product.style.display = "none";
+                    product.style.display = 'none';
                 }
             });
-
-            // Show or hide the "no results" message
-            if (noResultsMessage) {
-                noResultsMessage.style.display = visibleCount === 0 ? "block" : "none";
-            }
         }
 
-        // Add event listeners to both filters
-        categoryFilter.addEventListener("change", applyFilters);
-        branchFilter.addEventListener("change", applyFilters);
+        searchInput.addEventListener('input', applyFilters);
+        categoryFilter.addEventListener('change', applyFilters);
+
+        if (branchFilter) {
+            branchFilter.addEventListener('change', applyFilters);
+        }
+
+        // Re-apply filters when mode changes
+        if (modeSwitch) {
+            modeSwitch.addEventListener('change', applyFilters);
+        }
     }
 
+    // --- Reports Page Logic ---
+    const reportsPage = document.getElementById('reports-page');
+    if (reportsPage) {
+        // Fungsi untuk merender/menganimasikan grafik
+        function renderChart() {
+            const bars = document.querySelectorAll('.bar');
+            bars.forEach((bar, index) => {
+                const value = bar.dataset.value;
+                // Reset animasi dengan menghapus dan menambahkan kembali
+                bar.style.animation = 'none';
+                bar.offsetHeight; // trik untuk trigger reflow
+                bar.style.animation = null;
 
-    // --- 4. Transaction Modal Logic (on product-detail.html) ---
-    // This code runs only if it finds the transaction modal overlay.
-    const transactionModalOverlay = document.getElementById("transactionModalOverlay");
-    if (transactionModalOverlay) {
-        const openModalInBtn = document.getElementById("openTransactionModal");
-        const openModalOutBtn = document.getElementById("openTransactionModalOut");
-        const closeModalBtn = document.getElementById("closeTransactionModal");
-        const saveTransactionBtn = document.getElementById("saveTransaction");
-        const modalTitle = transactionModalOverlay.querySelector('h2');
-
-        if (openModalInBtn) {
-            openModalInBtn.addEventListener("click", () => {
-                if (modalTitle) modalTitle.textContent = "Catat Barang Masuk";
-                transactionModalOverlay.style.display = "flex";
+                // Atur nilai dan delay animasi
+                bar.style.setProperty('--value', value);
+                bar.style.animationDelay = index * 0.1 + 's';
             });
         }
+        // Render grafik saat halaman pertama kali dimuat
+        renderChart();
+    }
 
-        if (openModalOutBtn) {
-            openModalOutBtn.addEventListener("click", () => {
-                if (modalTitle) modalTitle.textContent = "Catat Barang Keluar";
-                transactionModalOverlay.style.display = "flex";
-            });
-        }
+    // --- Add Product Page Logic (BARU) ---
+    const addProductPage = document.getElementById('add-product-page');
+    if (addProductPage) {
+        const unitSelect = document.getElementById('product-unit');
+        const customUnitGroup = document.getElementById('custom-unit-group');
 
-        if (closeModalBtn) closeModalBtn.addEventListener("click", () => transactionModalOverlay.style.display = "none");
-
-        if (saveTransactionBtn) {
-            saveTransactionBtn.addEventListener("click", () => {
-                alert("Transaksi berhasil dicatat!");
-                transactionModalOverlay.style.display = "none";
-            });
-        }
-
-        // Also close modal if clicking outside the content area
-        window.addEventListener('click', (event) => {
-            if (event.target == transactionModalOverlay) {
-                transactionModalOverlay.style.display = "none";
+        unitSelect.addEventListener('change', () => {
+            if (unitSelect.value === 'other') {
+                customUnitGroup.style.display = 'block';
+            } else {
+                customUnitGroup.style.display = 'none';
             }
         });
     }
 
+});
 
-    // --- 5. Category Modal Logic (on add-edit-product.html) ---
-    // This code runs only if it finds the category modal overlay.
-    const categoryModalOverlay = document.getElementById("categoryModalOverlay");
-    if (categoryModalOverlay) {
-        const openCategoryModalBtn = document.getElementById("openCategoryModalBtn");
-        const closeCategoryModalBtn = document.getElementById("closeCategoryModalBtn");
-        const saveCategoryBtn = document.getElementById("saveCategoryBtn");
-        const newCategoryInput = document.getElementById("new-category-name");
-        const mainCategorySelect = document.getElementById("category");
-
-        // Open modal
-        if (openCategoryModalBtn) {
-            openCategoryModalBtn.addEventListener("click", (e) => {
-                e.preventDefault();
-                categoryModalOverlay.style.display = "flex";
-            });
-        }
-
-        // Close modal
-        if (closeCategoryModalBtn) closeCategoryModalBtn.addEventListener("click", () => categoryModalOverlay.style.display = "none");
-
-        // Save new category
-        if (saveCategoryBtn) {
-            saveCategoryBtn.addEventListener("click", () => {
-                const categoryName = newCategoryInput.value.trim();
-                if (categoryName === "") {
-                    alert("Nama kategori tidak boleh kosong!");
-                    return;
-                }
-                const newOption = new Option(categoryName, categoryName.toLowerCase().replace(/\s+/g, "-"));
-                mainCategorySelect.add(newOption);
-                mainCategorySelect.value = newOption.value;
-                alert(`Kategori "${categoryName}" berhasil ditambahkan!`);
-                newCategoryInput.value = "";
-                categoryModalOverlay.style.display = "none";
-            });
-        }
-
-        // Also close modal if clicking outside
-        window.addEventListener('click', (event) => {
-            if (event.target == categoryModalOverlay) {
-                categoryModalOverlay.style.display = "none";
-            }
-        });
-    }
-
-}); // End of DOMContentLoaded
+// Global navigation function
+function navigateTo(page) {
+    window.location.href = page;
+}

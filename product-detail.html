@@ -10,111 +10,130 @@
 
 <body>
     <div class="mobile-frame">
-        <div class="notch"></div>
-        <div class="screen">
-
-            <header class="header">
-                <a href="dashboard.html" class="icon-link">←</a>
-                <h1>Detail Produk</h1>
-                <a href="add-edit-product.html" class="icon-link">✏️</a>
-            </header>
-
+        <header class="app-header">
+            <a href="dashboard.html" class="back-button">‹</a>
+            <h1>Detail Produk</h1>
+            <a href="add-product.html" class="action-button">✏️</a>
+        </header>
+        <div class="mobile-frame-content">
             <div class="container">
-                <div class="product-detail-img"></div>
-                <h2>Kopi Arabika Gayo</h2>
-                <p style="color: #666; margin-top: -15px;">SKU: KPG-001</p>
-                <p>Biji kopi arabika asli dari dataran tinggi Gayo, Aceh. Memiliki aroma kuat dan keasaman yang
-                    seimbang.</p>
-
-                <!-- Stok Section -->
-                <div class="detail-section">
-                    <h3>Stok Saat Ini</h3>
-                    <div class="free-only">
-                        <div class="form-group">
-                            <label for="stock-qty">Ubah Jumlah Stok</label>
-                            <input type="number" id="stock-qty" value="25">
-                        </div>
-                        <button class="btn btn-primary" onclick="alert('Stok berhasil diperbarui!')">Simpan
-                            Perubahan</button>
-                        <div class="card" style="margin-top:20px; background-color: #e3f2fd;">
-                            <h4>Upgrade ke Premium!</h4>
-                            <p>Lacak setiap barang masuk & keluar dan lihat riwayat stok lengkap. Upgrade sekarang!</p>
-                        </div>
-                    </div>
-                    <div class="premium-only">
-                        <p style="font-size: 2em; font-weight: bold; margin: 0;">25 <span
-                                style="font-size:0.6em; font-weight:normal;">unit</span></p>
-                        <p>Lokasi: Gudang Pusat</p>
-                        <div class="stock-actions">
-                            <button class="btn btn-primary" id="openTransactionModal">+ Barang Masuk</button>
-                            <button class="btn btn-secondary" id="openTransactionModalOut">- Barang Keluar</button>
+                <div class="card">
+                    <div style="display: flex; align-items: flex-start; gap: 15px;">
+                        <div class="placeholder-img" style="width: 80px; height: 80px; flex-shrink: 0;"></div>
+                        <div class="info">
+                            <h3>Biji Kopi Arabika</h3>
+                            <p>SKU: KOPI-001</p><span class="category-label">Bahan Baku</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Riwayat Stok Section (Hanya untuk PREMIUM) -->
-                <div class="detail-section premium-only">
-                    <h3>Riwayat Stok</h3>
-                    <table class="history-table">
-                        <thead>
-                            <tr>
-                                <th>Tanggal</th>
-                                <th>Tipe</th>
-                                <th>Jumlah</th>
-                                <th>Stok Akhir</th>
-                                <th>Oleh</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>25/05/24</td>
-                                <td class="out">OUT</td>
-                                <td>-5</td>
-                                <td>25</td>
-                                <td>Rina</td>
-                            </tr>
-                            <tr>
-                                <td>24/05/24</td>
-                                <td class="in">IN</td>
-                                <td>+10</td>
-                                <td>30</td>
-                                <td>Budi</td>
-                            </tr>
-                            <tr>
-                                <td>22/05/24</td>
-                                <td class="in">AUDIT</td>
-                                <td>20</td>
-                                <td>20</td>
-                                <td>System</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="card free-feature">
+                    <h4>Update Stok Cepat</h4>
+                    <div class="form-group" style="margin-top: 15px;">
+                        <label for="direct-stock">Jumlah Stok Saat Ini</label>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <input type="number" id="direct-stock" value="22" style="flex-grow: 1;">
+                            <span style="font-weight: bold;">Kg</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Update Stok</button>
+                </div>
+
+                <div class="premium-feature">
+                    <div class="card">
+                        <h4>Rincian Stok per Cabang</h4>
+                        <ul style="list-style: none; margin-top: 10px;">
+                            <li style="display:flex; justify-content: space-between; padding: 8px 0;"><span>Toko
+                                    Pusat</span> <strong>15 Kg</strong></li>
+                            <li
+                                style="display:flex; justify-content: space-between; padding: 8px 0; border-top: 1px solid #f0f0f0;">
+                                <span>Gudang Belakang</span> <strong>7 Kg</strong>
+                            </li>
+                        </ul>
+                        <p style="text-align: right; font-size: 1.2rem; margin-top: 10px;">Total: <strong>22 Kg</strong>
+                        </p>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                        <button class="btn btn-primary" style="background-color:#28a745; flex-grow: 1;"
+                            onclick="navigateTo('add-transaction.html')">Masuk</button>
+                        <button class="btn btn-primary" style="background-color:#ffc107; color: #333; flex-grow: 1;"
+                            onclick="navigateTo('transfer-stock.html')">Transfer</button>
+                        <button class="btn btn-primary" style="background-color:#dc3545; flex-grow: 1;"
+                            onclick="navigateTo('add-transaction.html')">Keluar</button>
+                    </div>
+
+                    <div class="card">
+                        <h4>Riwayat & Kartu Stok</h4>
+                        <table width="100%" style="margin-top: 15px; font-size: 0.8rem; border-collapse: collapse;">
+                            <thead>
+                                <tr style="text-align: left; border-bottom: 2px solid #ddd;">
+                                    <th style="padding: 8px 5px;">Tanggal</th>
+                                    <th style="padding: 8px 5px;">Keterangan</th>
+                                    <th style="padding: 8px 5px; text-align: center;">+/-</th>
+                                    <th style="padding: 8px 5px; text-align: right;">Saldo</th>
+                                    <th style="padding: 8px 5px;">Oleh</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid #f0f0f0;">
+                                    <td style="padding: 8px 5px;">13 Jun '25</td>
+                                    <td style="padding: 8px 5px;">Dari Toko Pusat</td>
+                                    <td style="padding: 8px 5px; text-align: center; color: #28a745;">+5 Kg</td>
+                                    <td style="padding: 8px 5px; text-align: right; font-weight: bold;">27 Kg</td>
+                                    <td style="padding: 8px 5px;">Budi</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #f0f0f0;">
+                                    <td style="padding: 8px 5px;">13 Jun '25</td>
+                                    <td style="padding: 8px 5px;">Ke Gudang B.</td>
+                                    <td style="padding: 8px 5px; text-align: center; color: #dc3545;">-5 Kg</td>
+                                    <td style="padding: 8px 5px; text-align: right; font-weight: bold;">22 Kg</td>
+                                    <td style="padding: 8px 5px;">Budi</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #f0f0f0;">
+                                    <td style="padding: 8px 5px;">12 Jun '25</td>
+                                    <td style="padding: 8px 5px;">Audit Stok Bulanan</td>
+                                    <td style="padding: 8px 5px; text-align: center; color:#6c757d;">-1 Kg</td>
+                                    <td style="padding: 8px 5px; text-align: right; font-weight: bold;">22 Kg</td>
+                                    <td style="padding: 8px 5px;">Budi</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #f0f0f0;">
+                                    <td style="padding: 8px 5px;">10 Jun '25</td>
+                                    <td style="padding: 8px 5px;">Barang Rusak</td>
+                                    <td style="padding: 8px 5px; text-align: center; color: #dc3545;">-2 Kg</td>
+                                    <td style="padding: 8px 5px; text-align: right; font-weight: bold;">23 Kg</td>
+                                    <td style="padding: 8px 5px;">Ani</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #f0f0f0;">
+                                    <td style="padding: 8px 5px;">08 Jun '25</td>
+                                    <td style="padding: 8px 5px;">Beli dari Supplier ABC</td>
+                                    <td style="padding: 8px 5px; text-align: center; color: #28a745;">+10 Kg</td>
+                                    <td style="padding: 8px 5px; text-align: right; font-weight: bold;">25 Kg</td>
+                                    <td style="padding: 8px 5px;">Budi</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #f0f0f0;">
+                                    <td style="padding: 8px 5px;">05 Jun '25</td>
+                                    <td style="padding: 8px 5px;">Penjualan #INV124</td>
+                                    <td style="padding: 8px 5px; text-align: center; color: #dc3545;">-5 Kg</td>
+                                    <td style="padding: 8px 5px; text-align: right; font-weight: bold;">15 Kg</td>
+                                    <td style="padding: 8px 5px;">Ani</td>
+                                </tr>
+                                <tr style="border-bottom: 1px solid #f0f0f0;">
+                                    <td style="padding: 8px 5px;">01 Jun '25</td>
+                                    <td style="padding: 8px 5px;">Stok Awal Produk</td>
+                                    <td style="padding: 8px 5px; text-align: center; color: #28a745;">+20 Kg</td>
+                                    <td style="padding: 8px 5px; text-align: right; font-weight: bold;">20 Kg</td>
+                                    <td style="padding: 8px 5px;">Budi</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-
-            <div class="simulation-bar">
-                <span>Mode Pengguna: Free</span>
-                <label class="switch"><input type="checkbox" id="userModeToggle"><span class="slider"></span></label>
-                <span>Premium</span>
-            </div>
-
         </div>
     </div>
-
-    <!-- Modal untuk Transaksi (posisinya di luar frame untuk overlay penuh) -->
-    <div class="modal-overlay" id="transactionModalOverlay">
-        <div class="modal-content">
-            <h2>Catat Barang Masuk</h2>
-            <div class="form-group"><label for="tx-qty">Jumlah</label><input type="number" id="tx-qty"
-                    placeholder="Masukkan jumlah"></div>
-            <div class="form-group"><label for="tx-notes">Keterangan (Opsional)</label><textarea id="tx-notes" rows="3"
-                    placeholder="Contoh: Pembelian dari Supplier A"></textarea></div>
-            <div class="stock-actions"><button class="btn btn-secondary"
-                    id="closeTransactionModal">Batal</button><button class="btn btn-primary"
-                    id="saveTransaction">Simpan</button></div>
-        </div>
-    </div>
-
+    <div class="global-controls"><span>Free Mode</span><label class="switch"><input type="checkbox"
+                id="mode-switch-checkbox"><span class="slider"></span></label><span>Premium Mode</span></div>
     <script src="script.js"></script>
 </body>
 

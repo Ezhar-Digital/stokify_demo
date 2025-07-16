@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Produk - Stokify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="add-product-page">
+    <div class="mobile-frame">
+        <header class="app-header">
+            <a href="javascript:history.back()" class="back-button">‹</a>
+            <h1>Tambah Produk Baru</h1>
+            <div class="action-button"></div>
+        </header>
+        <div class="mobile-frame-content">
+            <div class="container">
+                <div class="card">
+                    <h4>Informasi Produk</h4>
+                    <div class="form-group" style="margin-top: 15px;">
+                        <label for="product-name">Nama Produk</label>
+                        <input type="text" id="product-name" placeholder="cth: Biji Kopi Robusta">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-sku">SKU / Barcode</label>
+                        <input type="text" id="product-sku" placeholder="cth: KOPI-002">
+                    </div>
+                    <div class="form-group">
+                        <label for="product-category">Kategori</label>
+                        <select id="product-category">
+                            <option>Bahan Baku</option>
+                            <option>Elektronik</option>
+                            <option>Perlengkapan</option>
+                            <option>Lainnya</option>
+                        </select>
+                    </div>
+                    <!-- === INPUT SATUAN BARU === -->
+                    <div class="form-group">
+                        <label for="product-unit">Satuan Produk</label>
+                        <select id="product-unit">
+                            <option value="Pcs">Pcs</option>
+                            <option value="Unit">Unit</option>
+                            <option value="Kg">Kg</option>
+                            <option value="Gram">Gram</option>
+                            <option value="Liter">Liter</option>
+                            <option value="Box">Box</option>
+                            <option value="Lembar">Lembar</option>
+                            <option value="other">Lainnya...</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="custom-unit-group" style="display: none;">
+                        <label for="custom-unit-input">Masukkan Satuan Kustom</label>
+                        <input type="text" id="custom-unit-input" placeholder="cth: Botol, Rim, Karung">
+                    </div>
+                    <!-- ========================== -->
+                    <div class="form-group">
+                        <label for="product-image">Gambar Produk</label>
+                        <input type="file" id="product-image" style="padding: 0; border: none;">
+                    </div>
+                </div>
+                <div class="card">
+                    <h4>Stok Awal (Opsional)</h4>
+                    <p style="font-size: 0.8rem; color: #6c757d; margin-bottom: 15px;">Anda bisa mengisi stok awal
+                        produk ini sekarang, atau mengisinya nanti.</p>
+                    <div class="form-group free-feature">
+                        <label for="initial-stock-free">Jumlah Stok Awal</label>
+                        <input type="number" id="initial-stock-free" placeholder="cth: 15">
+                    </div>
+                    <div class="premium-feature">
+                        <div class="form-group"><label for="initial-stock-premium">Jumlah</label><input type="number"
+                                id="initial-stock-premium" placeholder="cth: 20"></div>
+                        <div class="form-group"><label for="branch-select">Tempatkan di Cabang</label><select
+                                id="branch-select">
+                                <option>Toko Pusat</option>
+                                <option>Gudang Belakang</option>
+                            </select></div>
+                        <div class="form-group"><label for="initial-stock-notes">Keterangan</label><textarea
+                                id="initial-stock-notes" placeholder="Stok awal saat produk dibuat"></textarea></div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" style="margin-top: 10px;" onclick="navigateTo('dashboard.html')">Simpan
+                    Produk</button>
+            </div>
+        </div>
+    </div>
+    <div class="global-controls"><span>Free Mode</span><label class="switch"><input type="checkbox"
+                id="mode-switch-checkbox"><span class="slider"></span></label><span>Premium Mode</span></div>
+    <script src="script.js"></script>
+</body>
+
+</html>

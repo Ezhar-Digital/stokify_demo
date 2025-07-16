@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Stok - Stokify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mobile-frame">
+        <header class="app-header">
+            <a href="product-detail.html" class="back-button">‹</a>
+            <h1>Transfer Stok</h1>
+            <div class="action-button"></div>
+        </header>
+        <div class="mobile-frame-content">
+            <div class="container">
+                <div class="card">
+                    <p style="margin-bottom: 20px;">Produk: <strong>Biji Kopi Arabika</strong></p>
+                    <div class="form-group">
+                        <label for="branch-from">Transfer Dari Cabang:</label>
+                        <select id="branch-from">
+                            <option>Toko Pusat (Stok: 15 Kg)</option>
+                            <option>Gudang Belakang (Stok: 7 Kg)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="branch-to">Ke Cabang:</label>
+                        <select id="branch-to">
+                            <option>Gudang Belakang</option>
+                            <option>Toko Pusat</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="quantity">Jumlah yang Ditransfer</label>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <input type="number" id="quantity" placeholder="cth: 5" style="flex-grow: 1;">
+                            <span style="font-weight: bold;">Kg</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Tanggal Transfer</label>
+                        <input type="date" id="date" value="2025-06-13">
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Keterangan (Opsional)</label>
+                        <textarea id="notes" placeholder="cth: Pindah stok untuk persiapan promo"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary" style="margin-top: 10px;"
+                    onclick="alert('Transfer stok berhasil dicatat!')">Simpan Transfer</button>
+            </div>
+        </div>
+    </div>
+    <div class="global-controls">
+        <span>Free Mode</span>
+        <label class="switch"><input type="checkbox" id="mode-switch-checkbox"><span class="slider"></span></label>
+        <span>Premium Mode</span>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

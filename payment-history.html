@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Riwayat Pembayaran - Stokify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mobile-frame">
+        <header class="app-header">
+            <a href="settings.html" class="back-button">‹</a>
+            <h1>Riwayat Pembayaran</h1>
+            <div class="action-button"></div>
+        </header>
+        <div class="mobile-frame-content">
+            <div class="container">
+                <div class="card free-feature text-center">
+                    <h3>Fitur ini untuk Pengguna Premium</h3>
+                    <p style="color: #6c757d; margin: 10px 0;">Pengguna gratis tidak memiliki riwayat pembayaran.</p>
+                    <button class="btn btn-primary" style="margin-top: 15px;"
+                        onclick="navigateTo('upgrade.html')">Upgrade Sekarang</button>
+                </div>
+                <div class="card premium-feature">
+                    <table width="100%" style="font-size: 0.9rem; border-collapse: collapse;">
+                        <thead>
+                            <tr style="text-align: left; border-bottom: 2px solid #ddd;">
+                                <th style="padding: 10px 5px;">Tanggal</th>
+                                <th style="padding: 10px 5px;">Deskripsi</th>
+                                <th style="padding: 10px 5px; text-align: right;">Jumlah</th>
+                                <th style="padding: 10px 5px; text-align: center;">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 12px 5px;">13 Jun 2025</td>
+                                <td style="padding: 12px 5px;">Langganan Tahunan</td>
+                                <td style="padding: 12px 5px; text-align: right;">Rp 490.000</td>
+                                <td style="padding: 12px 5px; text-align: center;"><span
+                                        style="color: #28a745; font-weight: bold;">Sukses</span></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 12px 5px;">12 Mei 2025</td>
+                                <td style="padding: 12px 5px;">Langganan Bulanan</td>
+                                <td style="padding: 12px 5px; text-align: right;">Rp 10.000</td>
+                                <td style="padding: 12px 5px; text-align: center;"><span
+                                        style="color: #dc3545; font-weight: bold;">Gagal</span></td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #f0f0f0;">
+                                <td style="padding: 12px 5px;">12 Mei 2025</td>
+                                <td style="padding: 12px 5px;">Langganan Bulanan</td>
+                                <td style="padding: 12px 5px; text-align: right;">Rp 10.000</td>
+                                <td style="padding: 12px 5px; text-align: center;"><span
+                                        style="color: #ffc107; font-weight: bold;">Pending</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="global-controls"><span>Free Mode</span><label class="switch"><input type="checkbox"
+                id="mode-switch-checkbox"><span class="slider"></span></label><span>Premium Mode</span></div>
+    <script src="script.js"></script>
+</body>
+
+</html>

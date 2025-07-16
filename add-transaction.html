@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catat Transaksi - Stokify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mobile-frame">
+        <header class="app-header">
+            <a href="javascript:history.back()" class="back-button">‹</a>
+            <h1>Catat Transaksi Stok</h1>
+            <div class="action-button"></div>
+        </header>
+
+        <div class="mobile-frame-content">
+            <div class="container">
+                <div class="card">
+                    <p style="margin-bottom: 20px;">Produk: <strong>Biji Kopi Arabika</strong></p>
+
+                    <!-- Tipe Transaksi Menggunakan Radio Button (Pilihan Terbaik) -->
+                    <div class="form-group">
+                        <label>Tipe Transaksi</label>
+                        <div style="display: flex; gap: 20px; margin-top: 5px;">
+                            <div>
+                                <input type="radio" id="in" name="transaction-type" value="in" checked>
+                                <label for="in" style="font-weight: normal; cursor: pointer;">Barang Masuk</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="out" name="transaction-type" value="out">
+                                <label for="out" style="font-weight: normal; cursor: pointer;">Barang Keluar</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Input Jumlah dengan Konteks Satuan -->
+                    <div class="form-group">
+                        <label for="quantity">Jumlah</label>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <input type="number" id="quantity" placeholder="cth: 10" style="flex-grow: 1;">
+                            <span style="font-weight: bold;">Kg</span>
+                        </div>
+                    </div>
+
+                    <!-- Input Tanggal Transaksi -->
+                    <div class="form-group">
+                        <label for="date">Tanggal Transaksi</label>
+                        <input type="date" id="date" value="2025-06-13">
+                    </div>
+
+                    <!-- Input Keterangan -->
+                    <div class="form-group">
+                        <label for="notes">Keterangan (Opsional)</label>
+                        <textarea id="notes" placeholder="cth: Pembelian dari Supplier ABC"></textarea>
+                    </div>
+
+                    <!-- Tombol Aksi -->
+                    <button class="btn btn-primary" style="margin-top: 10px;"
+                        onclick="navigateTo('product-detail.html')">Simpan Transaksi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kontrol Global untuk Mode -->
+    <div class="global-controls">
+        <span>Free Mode</span>
+        <label class="switch"><input type="checkbox" id="mode-switch-checkbox"><span class="slider"></span></label>
+        <span>Premium Mode</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

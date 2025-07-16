@@ -8,109 +8,138 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body id="dashboard-page">
     <div class="mobile-frame">
-        <div class="notch"></div>
-        <div class="screen">
-
-            <header class="header">
-                <h1>Stokify</h1>
-                <a href="user-management.html" class="icon-link">👥</a>
-            </header>
-
+        <header class="app-header">
+            <h1>Stokify</h1>
+            <a href="#" class="action-button">🔔</a>
+        </header>
+        <div class="mobile-frame-content">
             <div class="container">
-                <!-- Search Bar -->
-                <div class="form-group">
-                    <input type="search" placeholder="Cari produk...">
-                </div>
-
-                <!-- Filter Container -->
-                <div class="filter-container">
-                    <div class="form-group">
-                        <select id="categoryFilter">
-                            <option value="all">Semua Kategori</option>
-                            <option value="bahan-baku">Bahan Baku</option>
-                            <option value="peralatan">Peralatan</option>
-                            <option value="barang-jadi">Barang Jadi</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <select id="branchFilter">
-                            <option value="all">Semua Gudang</option>
-                            <option value="gudang-pusat">Gudang Pusat</option>
-                            <option value="toko-depan">Toko Depan</option>
-                        </select>
+                <div class="dashboard-controls">
+                    <div class="form-group"><input type="text" id="search-input" placeholder="🔍 Cari produk..."></div>
+                    <div class="filter-bar">
+                        <div class="filter-group">
+                            <select id="filter-kategori">
+                                <option value="all">Semua Kategori</option>
+                                <option value="Bahan Baku">Bahan Baku</option>
+                                <option value="Elektronik">Elektronik</option>
+                                <option value="Perlengkapan">Perlengkapan</option>
+                            </select>
+                        </div>
+                        <div class="filter-group premium-feature">
+                            <select id="filter-cabang">
+                                <option value="all">Semua Cabang</option>
+                                <option value="Toko Pusat">Toko Pusat</option>
+                                <option value="Gudang Belakang">Gudang Belakang</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Product List Section -->
-                <div class="item-list">
-                    <!-- Atribut data-branches ditambahkan -->
-                    <a href="product-detail.html" data-category="bahan-baku" data-branches="gudang-pusat,toko-depan">
-                        <div class="card list-item-card product">
-                            <div class="img-placeholder"></div>
+                <div id="product-list">
+                    <div class="product-item card" data-category="Bahan Baku" data-branch="Toko Pusat"><a
+                            href="product-detail.html">
+                            <div class="placeholder-img"></div>
                             <div class="info">
-                                <h3>Kopi Arabika Gayo</h3>
-                                <p>SKU: KPG-001</p>
-                                <span class="category-tag">Bahan Baku</span>
+                                <h3>Biji Kopi Arabika</h3>
+                                <p>SKU: KOPI-001</p><span class="category-label">Bahan Baku</span>
                             </div>
-                            <div class="right-content">25</div>
-                        </div>
-                    </a>
-                    <a href="product-detail.html" data-category="peralatan" data-branches="gudang-pusat">
-                        <div class="card list-item-card product">
-                            <div class="img-placeholder"></div>
-                            <div class="info">
-                                <h3>Mesin Kopi Espresso</h3>
-                                <p>SKU: MCN-001</p>
-                                <span class="category-tag">Peralatan</span>
+                            <div class="stock"><span>15</span>
+                                <p>Kg</p>
                             </div>
-                            <div class="right-content">1</div>
-                        </div>
-                    </a>
-                    <a href="product-detail.html" data-category="bahan-baku" data-branches="gudang-pusat">
-                        <div class="card list-item-card product">
-                            <div class="img-placeholder"></div>
+                        </a></div>
+                    <div class="product-item card" data-category="Bahan Baku" data-branch="Gudang Belakang"><a
+                            href="product-detail.html">
+                            <div class="placeholder-img"></div>
                             <div class="info">
                                 <h3>Susu UHT Full Cream</h3>
-                                <p>SKU: SS-001</p>
-                                <span class="category-tag">Bahan Baku</span>
+                                <p>SKU: SUSU-001</p><span class="category-label">Bahan Baku</span>
                             </div>
-                            <div class="right-content">80</div>
-                        </div>
-                    </a>
-                    <a href="product-detail.html" data-category="bahan-baku" data-branches="toko-depan">
-                        <div class="card list-item-card product" style="border-left: 5px solid var(--danger-color);">
-                            <div class="img-placeholder"></div>
+                            <div class="stock"><span>32</span>
+                                <p>Pcs</p>
+                            </div>
+                        </a></div>
+                    <div class="product-item card" data-category="Elektronik" data-branch="Toko Pusat"><a
+                            href="product-detail.html">
+                            <div class="placeholder-img"></div>
                             <div class="info">
-                                <h3>Sirup Karamel</h3>
-                                <p>SKU: SRP-002</p>
-                                <span class="category-tag">Bahan Baku</span>
+                                <h3>iPhone 15 Pro Max</h3>
+                                <p>SKU: EL-IP15PM</p><span class="category-label">Elektronik</span>
                             </div>
-                            <div class="right-content">4</div>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Pesan jika tidak ada hasil -->
-                <div id="no-results-message"
-                    style="display: none; text-align: center; color: var(--dark-gray); padding: 20px;">
-                    <p>Tidak ada produk yang cocok dengan filter.</p>
+                            <div class="stock"><span>8</span>
+                                <p>Unit</p>
+                            </div>
+                        </a></div>
+                    <div class="product-item card" data-category="Elektronik" data-branch="Gudang Belakang"><a
+                            href="product-detail.html">
+                            <div class="placeholder-img"></div>
+                            <div class="info">
+                                <h3>Charger Anker 20W</h3>
+                                <p>SKU: EL-CHG20W</p><span class="category-label">Elektronik</span>
+                            </div>
+                            <div class="stock"><span>25</span>
+                                <p>Unit</p>
+                            </div>
+                        </a></div>
+                    <div class="product-item card" data-category="Perlengkapan" data-branch="Toko Pusat"><a
+                            href="product-detail.html">
+                            <div class="placeholder-img"></div>
+                            <div class="info">
+                                <h3>Gelas Kaca 250ml</h3>
+                                <p>SKU: PER-GLS250</p><span class="category-label">Perlengkapan</span>
+                            </div>
+                            <div class="stock"><span>50</span>
+                                <p>Pcs</p>
+                            </div>
+                        </a></div>
+                    <div class="product-item card" data-category="Bahan Baku" data-branch="Toko Pusat"><a
+                            href="product-detail.html">
+                            <div class="placeholder-img"></div>
+                            <div class="info">
+                                <h3>Sirup Vanilla</h3>
+                                <p>SKU: SIRUP-VAN</p><span class="category-label">Bahan Baku</span>
+                            </div>
+                            <div class="stock"><span>12</span>
+                                <p>Botol</p>
+                            </div>
+                        </a></div>
+                    <div class="product-item card" data-category="Elektronik" data-branch="Toko Pusat"><a
+                            href="product-detail.html">
+                            <div class="placeholder-img"></div>
+                            <div class="info">
+                                <h3>Samsung Galaxy S25</h3>
+                                <p>SKU: EL-SGS25</p><span class="category-label">Elektronik</span>
+                            </div>
+                            <div class="stock"><span>11</span>
+                                <p>Unit</p>
+                            </div>
+                        </a></div>
+                    <div class="product-item card" data-category="Perlengkapan" data-branch="Gudang Belakang"><a
+                            href="product-detail.html">
+                            <div class="placeholder-img"></div>
+                            <div class="info">
+                                <h3>Kardus Packing</h3>
+                                <p>SKU: PER-BOX01</p><span class="category-label">Perlengkapan</span>
+                            </div>
+                            <div class="stock"><span>150</span>
+                                <p>Lbr</p>
+                            </div>
+                        </a></div>
                 </div>
             </div>
-
-            <a href="add-edit-product.html" class="fab">+</a>
-
-            <div class="simulation-bar">
-                <span>Mode Pengguna: Free</span>
-                <label class="switch">
-                    <input type="checkbox" id="userModeToggle">
-                    <span class="slider"></span>
-                </label>
-                <span>Premium</span>
-            </div>
-
         </div>
+        <a href="add-product.html" class="fab">+</a>
+        <nav class="bottom-nav">
+            <a href="dashboard.html" class="nav-item active">🏠<br>Beranda</a>
+            <a href="reports.html" class="nav-item premium-feature">📊<br>Laporan</a>
+            <a href="upgrade.html" class="nav-item upgrade-nav-item">⭐<br>Upgrade</a>
+            <a href="settings.html" class="nav-item">⚙️<br>Pengaturan</a>
+        </nav>
+    </div>
+    <div class="global-controls">
+        <span>Free Mode</span>
+        <label class="switch"><input type="checkbox" id="mode-switch-checkbox"><span class="slider"></span></label>
+        <span>Premium Mode</span>
     </div>
     <script src="script.js"></script>
 </body>

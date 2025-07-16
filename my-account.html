@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akun Saya - Stokify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mobile-frame">
+        <header class="app-header">
+            <a href="settings.html" class="back-button">‹</a>
+            <h1>Akun Saya</h1>
+            <div class="action-button"></div>
+        </header>
+        <div class="mobile-frame-content">
+            <div class="container">
+                <div class="card">
+                    <h4>Informasi Akun</h4>
+                    <div class="form-group" style="margin-top: 15px;">
+                        <label for="full-name">Nama Lengkap</label>
+                        <input type="text" id="full-name" value="Budi Santoso">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email (tidak dapat diubah)</label>
+                        <input type="email" id="email" value="budi@elektronik.com" disabled
+                            style="background-color: #e9ecef;">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4>Ubah Password</h4>
+                    <div class="form-group" style="margin-top: 15px;">
+                        <label for="old-password">Password Lama</label>
+                        <input type="password" id="old-password" placeholder="Masukkan password Anda saat ini">
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password">Password Baru</label>
+                        <input type="password" id="new-password" placeholder="Minimal 8 karakter">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Konfirmasi Password Baru</label>
+                        <input type="password" id="confirm-password" placeholder="Ulangi password baru">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h4>Informasi Perusahaan & Langganan</h4>
+                    <div class="form-group" style="margin-top: 15px;">
+                        <label for="company-name">Nama Perusahaan</label>
+                        <input type="text" id="company-name" value="Toko Elektronik Budi">
+                    </div>
+
+                    <!-- Untuk Pengguna FREE -->
+                    <div class="free-feature">
+                        <label>Status Langganan</label>
+                        <p style="margin-top: 5px;"><strong>Free (Individual)</strong></p>
+                        <button class="btn btn-primary" style="margin-top: 15px;"
+                            onclick="navigateTo('upgrade.html')">Upgrade ke Premium</button>
+                    </div>
+
+                    <!-- Untuk Pengguna PREMIUM -->
+                    <div class="premium-feature">
+                        <label>Status Langganan</label>
+                        <p style="margin-top: 5px;"><strong>Premium (Business)</strong></p>
+                        <p style="font-size: 0.9rem; margin-top: 10px;">Aktif hingga: <strong>13 Juni 2026</strong></p>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" style="margin-top: 10px;" onclick="alert('Perubahan disimpan!')">Simpan
+                    Perubahan</button>
+            </div>
+        </div>
+    </div>
+    <div class="global-controls">
+        <span>Free Mode</span>
+        <label class="switch"><input type="checkbox" id="mode-switch-checkbox"><span class="slider"></span></label>
+        <span>Premium Mode</span>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

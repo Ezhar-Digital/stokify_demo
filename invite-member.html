@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undang Anggota - Stokify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mobile-frame">
+        <header class="app-header">
+            <a href="team-management.html" class="back-button">‹</a>
+            <h1>Undang Anggota Baru</h1>
+            <div class="action-button"></div>
+        </header>
+        <div class="mobile-frame-content">
+            <div class="container">
+                <div class="card">
+                    <p style="color: #6c757d; margin-bottom: 20px;">Anggota yang diundang akan menerima email untuk
+                        bergabung dengan perusahaan Anda. Anda dapat mengundang <strong>1</strong> anggota lagi.</p>
+                    <div class="form-group">
+                        <label for="invite-email">Email Anggota Baru</label>
+                        <input type="email" id="invite-email" placeholder="contoh.staf@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="invite-role">Tetapkan Peran</label>
+                        <select id="invite-role">
+                            <option value="staf" selected>Staf (Akses Terbatas)</option>
+                            <option value="admin">Admin (Akses Penuh)</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary" style="margin-top: 10px;"
+                    onclick="alert('Undangan terkirim ke email yang dituju!')">Kirim Undangan</button>
+            </div>
+        </div>
+    </div>
+    <div class="global-controls">
+        <span>Free Mode</span>
+        <label class="switch"><input type="checkbox" id="mode-switch-checkbox"><span class="slider"></span></label>
+        <span>Premium Mode</span>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

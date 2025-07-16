@@ -10,33 +10,23 @@
 
 <body>
     <div class="mobile-frame">
-        <div class="notch"></div>
-        <div class="screen">
-
-            <div class="auth-container">
-                <div class="card">
-                    <h1>Buat Akun Baru</h1>
-                    <form onsubmit="event.preventDefault(); window.location.href='company-setup.html';">
-                        <div class="form-group">
-                            <label for="name">Nama Lengkap</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-full">Daftar</button>
-                    </form>
-                    <div class="auth-link">
-                        <p>Sudah punya akun? <a href="login.html">Login di sini</a></p>
-                    </div>
-                </div>
+        <header class="app-header">
+            <a href="onboarding.html" class="back-button">‹</a>
+            <h1>Buat Akun Baru</h1>
+            <div class="action-button"></div>
+        </header>
+        <div class="mobile-frame-content">
+            <div class="container">
+                <div class="form-group"><label for="name">Nama Lengkap</label><input type="text" id="name"
+                        placeholder="cth: Budi Santoso"></div>
+                <div class="form-group"><label for="email">Email</label><input type="email" id="email"
+                        placeholder="contoh@email.com"></div>
+                <div class="form-group"><label for="password">Password</label><input type="password" id="password"
+                        placeholder="Minimal 8 karakter"></div>
+                <button class="btn btn-primary" onclick="navigateTo('setup-wizard.html')">Daftar</button>
+                <p class="text-center" style="margin-top: 15px; font-size: 0.9rem;">Sudah punya akun? <a
+                        href="index.html">Masuk</a></p>
             </div>
-
         </div>
     </div>
     <script src="script.js"></script>

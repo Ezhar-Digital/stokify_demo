@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan - Stokify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="reports-page">
+    <div class="mobile-frame">
+        <header class="app-header">
+            <a href="dashboard.html" class="back-button">‹</a>
+            <h1>Laporan</h1>
+            <div class="action-button"></div>
+        </header>
+        <div class="mobile-frame-content">
+            <div class="container">
+                <!-- Pesan untuk Pengguna Free -->
+                <div class="card free-feature text-center">
+                    <h3>Fitur Laporan hanya untuk Premium</h3>
+                    <p style="color: #6c757d; margin: 10px 0;">Upgrade akun Anda untuk melihat ringkasan bisnis, stok
+                        terlaris, dan lainnya.</p>
+                    <button class="btn btn-primary" style="margin-top: 15px;"
+                        onclick="navigateTo('upgrade.html')">Upgrade Sekarang</button>
+                </div>
+
+                <!-- Konten untuk Pengguna Premium -->
+                <div class="premium-feature">
+                    <div class="card">
+                        <h4>Ringkasan Stok</h4>
+                        <div class="report-summary-grid" style="margin-top: 15px;">
+                            <div class="summary-card">
+                                <h4>125</h4>
+                                <p>Total Item</p>
+                            </div>
+                            <div class="summary-card">
+                                <h4>Rp 5jt</h4>
+                                <p>Nilai Stok</p>
+                            </div>
+                            <div class="summary-card">
+                                <h4>5</h4>
+                                <p>Stok Menipis</p>
+                            </div>
+                            <div class="summary-card">
+                                <h4>2</h4>
+                                <p>Stok Habis</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4>Stok 5 Produk Teratas (berdasarkan kuantitas)</h4>
+
+                        <!-- VISUALISASI GRAFIK BATANG -->
+                        <div class="chart-container">
+                            <div class="y-axis">
+                                <span>150</span>
+                                <span>100</span>
+                                <span>50</span>
+                                <span>0</span>
+                            </div>
+                            <div class="chart-area">
+                                <!-- Batang 1 -->
+                                <div class="bar-wrapper">
+                                    <div class="bar-value">150</div>
+                                    <div class="bar" data-value="100"></div> <!-- Nilai maks 150 = 100% tinggi -->
+                                    <div class="bar-label">Kardus P.</div>
+                                </div>
+                                <!-- Batang 2 -->
+                                <div class="bar-wrapper">
+                                    <div class="bar-value">50</div>
+                                    <div class="bar" data-value="33"></div> <!-- 50/150 = 33% -->
+                                    <div class="bar-label">Gelas Kaca</div>
+                                </div>
+                                <!-- Batang 3 -->
+                                <div class="bar-wrapper">
+                                    <div class="bar-value">32</div>
+                                    <div class="bar" data-value="21"></div> <!-- 32/150 = 21% -->
+                                    <div class="bar-label">Susu UHT</div>
+                                </div>
+                                <!-- Batang 4 -->
+                                <div class="bar-wrapper">
+                                    <div class="bar-value">25</div>
+                                    <div class="bar" data-value="17"></div> <!-- 25/150 = 17% -->
+                                    <div class="bar-label">Charger A.</div>
+                                </div>
+                                <!-- Batang 5 -->
+                                <div class="bar-wrapper">
+                                    <div class="bar-value">15</div>
+                                    <div class="bar" data-value="10"></div> <!-- 15/150 = 10% -->
+                                    <div class="bar-label">Kopi Arab.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="bottom-nav">
+            <a href="dashboard.html" class="nav-item">🏠<br>Beranda</a>
+            <a href="reports.html" class="nav-item premium-feature active">📊<br>Laporan</a>
+            <a href="upgrade.html" class="nav-item upgrade-nav-item">⭐<br>Upgrade</a>
+            <a href="settings.html" class="nav-item">⚙️<br>Pengaturan</a>
+        </nav>
+    </div>
+    <div class="global-controls">
+        <span>Free Mode</span>
+        <label class="switch"><input type="checkbox" id="mode-switch-checkbox"><span class="slider"></span></label>
+        <span>Premium Mode</span>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

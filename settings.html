@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pengaturan - Stokify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="mobile-frame">
+        <header class="app-header">
+            <a href="dashboard.html" class="back-button">‹</a>
+            <h1>Pengaturan</h1>
+            <div class="action-button"></div>
+        </header>
+        <div class="mobile-frame-content">
+            <div class="container">
+                <div class="card">
+                    <h4>Akun</h4>
+                    <ul style="list-style: none; margin-top: 10px;">
+                        <li style="padding: 12px 0; border-bottom: 1px solid #f0f0f0;"><a href="my-account.html"
+                                style="text-decoration: none; color: inherit;">Profil Saya</a></li>
+                        <li class="team-management-link" style="padding: 12px 0;"><a href="team-management.html"
+                                style="text-decoration: none; color: inherit;">Manajemen Tim</a></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Langganan</h4>
+                    <ul style="list-style: none; margin-top: 10px;">
+                        <li style="padding: 12px 0;"><a href="payment-history.html"
+                                style="text-decoration: none; color: inherit;">Riwayat Pembayaran</a></li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary" style="background-color: #dc3545;"
+                    onclick="navigateTo('index.html')">Keluar</button>
+            </div>
+        </div>
+        <nav class="bottom-nav">
+            <a href="dashboard.html" class="nav-item">🏠<br>Beranda</a>
+            <a href="reports.html" class="nav-item premium-feature">📊<br>Laporan</a>
+            <a href="upgrade.html" class="nav-item upgrade-nav-item">⭐<br>Upgrade</a>
+            <a href="settings.html" class="nav-item active">⚙️<br>Pengaturan</a>
+        </nav>
+    </div>
+    <div class="global-controls"><span>Free Mode</span><label class="switch"><input type="checkbox"
+                id="mode-switch-checkbox"><span class="slider"></span></label><span>Premium Mode</span></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
